@@ -17,7 +17,7 @@ void deleteList(Node * &head);
 
 int main() {
     
-    char repeat;
+    char repeat = 'y';
     // initializes the linked list
     Node *head = nullptr;
     
@@ -31,6 +31,7 @@ int main() {
     cout << "   Your Choice: ";
     cin >> userDecision;
 
+    // while user has not select n or N - input movie ratings & reviews
     while (repeat != 'n' && repeat != 'N'){
         
         cout << "Enter review rating 0-5: ";
@@ -39,11 +40,12 @@ int main() {
 
         cout << "Enter review comments: ";
         getline(cin, mComments); 
-
+        
+        // new Node to store user input
         Node *newMovie = new Node;
         newMovie->movieRating = mRating;
         newMovie->reviewComments = mComments;
-
+        // If 1 store in head & if 2 store at tail 
         if (userDecision == 1)
             insertNodeHead(head, newMovie);
         else
@@ -56,7 +58,7 @@ int main() {
 
     outputReviews(head);
 
-
+    deleteList(head);
 
     return 0;
 }
@@ -109,12 +111,27 @@ void outputReviews(Node * &head) {
     Node * curr = head;
     cout << "Outputting all reviews: " << endl;
     while (curr) {
+        // display curr Node data
         cout << "   > Review #" << count << ": " << curr->movieRating << " Comments: " << curr->reviewComments << endl;
         sum += curr->movieRating;
         count++;
+        // move curr to next Node
         curr = curr->next;
     }
+    // calculate average and display
+    cout << "   > Average Rating: " << (sum / (count - 1)) << endl;
+}
 
-    cout << "   > Average Rating: " << (sum / count) << endl;
+void deleteList(Node * &head) {
+    Node * curr = head;
 
+    // while curr is not null
+    while(curr) {
+        // move head to next and delete curr Node
+        head = curr->next;
+        delete curr;
+        curr = head;
+    }
+    // make head point to nullptr
+    head = nullptr;
 }
