@@ -13,6 +13,7 @@ struct Node {
 void insertNodeHead(Node * &head, Node * &newMovie);
 void insertNodeTail(Node * &head, Node * &newMovie);
 void outputReviews(Node * &head);
+void deleteList(Node * &head);
 
 int main() {
     
@@ -86,8 +87,8 @@ void insertNodeTail(Node * &head, Node * &newMovie){
     else {
         // traverse the linked list
         while (curr) {
+            prev = curr;
             curr = curr->next;
-            prev = prev ->next;
         }
         // at end - now insert between prev and curr
         newMovie->next = curr;
