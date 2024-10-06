@@ -1,3 +1,4 @@
+// Ethan Dilk | Lab 18 | COMSC 210
 #include <iostream>
 #include <string>
 using namespace std;
