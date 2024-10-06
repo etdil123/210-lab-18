@@ -11,6 +11,7 @@ struct Node {
 
 void insertNodeHead(Node * &head, Node * &newMovie);
 void insertNodeTail(Node * &head, Node * &newMovie);
+void outputReviews(Node * &head);
 
 int main() {
     
@@ -18,17 +19,18 @@ int main() {
     // initializes the linked list
     Node *head = nullptr;
     
+    int userDecision;
+    float mRating;
+    string mComments;
+   
+    cout << "Select linked list method to be used: " << endl;
+    cout << "   [1] New nodes are added at the head of the linked list" << endl;
+    cout << "   [2] New nodes are added to the tail of the linked list" << endl;
+    cout << "   Your Choice: ";
+    cin >> userDecision;
+
     while (repeat != 'n' && repeat != 'N'){
-        int userDecision;
-        float mRating;
-        string mComments;
-
-        cout << "Select linked list method to be used: " << endl;
-        cout << "   [1] New nodes are added at the head of the linked list" << endl;
-        cout << "   [2] New nodes are added to the tail of the linked list" << endl;
-        cout << "   Your Choice: ";
-        cin >> userDecision;
-
+        
         cout << "Enter review rating 0-5: ";
         cin >> mRating;
         cin.ignore();
@@ -40,13 +42,18 @@ int main() {
         newMovie->movieRating = mRating;
         newMovie->reviewComments = mComments;
 
-        
-
+        if (userDecision == 1)
+            insertNodeHead(head, newMovie);
+        else
+            insertNodeTail(head, newMovie);
 
         cout << "Enter another review? Y/N: ";
         cin >> repeat;
         
     }
+
+
+
 
     return 0;
 }
@@ -83,7 +90,21 @@ void insertNodeTail(Node * &head, Node * &newMovie){
         // at end - now insert between prev and curr
         newMovie->next = curr;
         prev->next = newMovie;
-
     }
+}
+
+void outputReviews(Node * &head) {
+
+    float sum = 0;
+    int count = 1;
+
+    if (!head){
+        cout << "No movie reviews!" << endl;
+        return;
+    }
+
+    Node * curr = head;
+
+
 
 }
