@@ -9,9 +9,14 @@ struct Node {
     Node * next;
 };
 
+void insertNodeHead(Node * &head, float, string);
+void insertNodeTail(Node * &head, float, string);
+
 int main() {
     
     char repeat;
+    // initializes the linked list
+    Node *head = nullptr;
     
     while (repeat != 'n' && repeat != 'N'){
         int userDecision;
@@ -24,7 +29,12 @@ int main() {
         cout << "   Your Choice: ";
         cin >> userDecision;
 
-        
+        cout << "Enter review rating 0-5: ";
+        cin >> mRating;
+        cin.ignore();
+
+        cout << "Enter review comments: ";
+        getline(cin, mComments); 
 
 
         cout << "Enter another review? Y/N: ";
@@ -33,4 +43,14 @@ int main() {
     }
 
     return 0;
+}
+
+void insertNodeHead(Node * &head, float rating, string review){
+
+    
+
+
+
+
+
 }
