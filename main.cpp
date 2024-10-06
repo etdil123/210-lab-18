@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-
 struct Node { 
     float movieRating;
     string reviewComments;
@@ -16,11 +15,10 @@ void outputReviews(Node * &head);
 void deleteList(Node * &head);
 
 int main() {
-    
-    char repeat = 'y';
     // initializes the linked list
     Node *head = nullptr;
     
+    char repeat = 'y';
     int userDecision;
     float mRating;
     string mComments;
@@ -33,7 +31,6 @@ int main() {
 
     // while user has not select n or N - input movie ratings & reviews
     while (repeat != 'n' && repeat != 'N'){
-        
         cout << "Enter review rating 0-5: ";
         cin >> mRating;
         cin.ignore();
@@ -45,6 +42,7 @@ int main() {
         Node *newMovie = new Node;
         newMovie->movieRating = mRating;
         newMovie->reviewComments = mComments;
+        newMovie->next = nullptr;
         // If 1 store in head & if 2 store at tail 
         if (userDecision == 1)
             insertNodeHead(head, newMovie);
@@ -53,18 +51,15 @@ int main() {
 
         cout << "Enter another review? Y/N: ";
         cin >> repeat;
-        
     }
 
     outputReviews(head);
-
     deleteList(head);
 
     return 0;
 }
 
 void insertNodeHead(Node * &head, Node * &newMovie){
-
     // if first node - then make it the head
     if (!head) {
         head = newMovie;
@@ -99,7 +94,6 @@ void insertNodeTail(Node * &head, Node * &newMovie){
 }
 
 void outputReviews(Node * &head) {
-
     float sum = 0;
     int count = 1;
 
