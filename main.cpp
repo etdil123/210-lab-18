@@ -52,6 +52,7 @@ int main() {
         
     }
 
+    outputReviews(head);
 
 
 
@@ -104,7 +105,14 @@ void outputReviews(Node * &head) {
     }
 
     Node * curr = head;
+    cout << "Outputting all reviews: " << endl;
+    while (curr) {
+        cout << "   > Review #" << count << ": " << curr->movieRating << " Comments: " << curr->reviewComments << endl;
+        sum += curr->movieRating;
+        count++;
+        curr = curr->next;
+    }
 
-
+    cout << "   > Average Rating: " << (sum / count) << endl;
 
 }
