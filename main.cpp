@@ -40,6 +40,9 @@ int main() {
         newMovie->movieRating = mRating;
         newMovie->reviewComments = mComments;
 
+        
+
+
         cout << "Enter another review? Y/N: ";
         cin >> repeat;
         
@@ -63,9 +66,24 @@ void insertNodeHead(Node * &head, Node * &newMovie){
 }
 
 void insertNodeTail(Node * &head, Node * &newMovie){
-    
+    Node * curr = head;
+    Node * prev = head;
 
+    if (!head) {
+        head = newMovie;
+        // since only 1 item in linked list - need to make it point to nullptr
+        newMovie = nullptr;
+    }
+    else {
+        // traverse the linked list
+        while (curr) {
+            curr = curr->next;
+            prev = prev ->next;
+        }
+        // at end - now insert between prev and curr
+        newMovie->next = curr;
+        prev->next = newMovie;
 
-
+    }
 
 }
