@@ -9,8 +9,8 @@ struct Node {
     Node * next;
 };
 
-void insertNodeHead(Node * &head, float, string);
-void insertNodeTail(Node * &head, float, string);
+void insertNodeHead(Node * &head, Node * &newMovie);
+void insertNodeTail(Node * &head, Node * &newMovie);
 
 int main() {
     
@@ -36,6 +36,9 @@ int main() {
         cout << "Enter review comments: ";
         getline(cin, mComments); 
 
+        Node *newMovie = new Node;
+        newMovie->movieRating = mRating;
+        newMovie->reviewComments = mComments;
 
         cout << "Enter another review? Y/N: ";
         cin >> repeat;
@@ -45,10 +48,22 @@ int main() {
     return 0;
 }
 
-void insertNodeHead(Node * &head, float rating, string review){
+void insertNodeHead(Node * &head, Node * &newMovie){
 
+    // if first node - then make it the head
+    if (!head) {
+        head = newMovie;
+        // since only 1 item in linked list - need to make it point to nullptr
+        newMovie = nullptr;
+    }
+    else {
+        newMovie->next = head;
+        head = newMovie;
+    }
+}
+
+void insertNodeTail(Node * &head, Node * &newMovie){
     
-
 
 
 
